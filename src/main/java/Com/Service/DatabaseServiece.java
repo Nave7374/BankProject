@@ -32,8 +32,13 @@ public class DatabaseServiece implements DatabaseCredentials {
 		Query query = em.createQuery(hql);
 		query.setParameter(1, username);
 		List<Account> a = query.getResultList();
-//		System.out.println(a);
-		return a==null?null:a.getFirst();
+		if(a!=null)System.out.println(a.getFirst());
+		try{
+			return a==null?null:a.getFirst();
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
 	}
 
 	@Override
