@@ -31,6 +31,7 @@ public class DatabaseServiece implements DatabaseCredentials {
 		String hql = "from Account where username = ?1";
 		Query query = em.createQuery(hql);
 		query.setParameter(1, username);
+		@SuppressWarnings("unchecked")
 		List<Account> a = query.getResultList();
 		if(a!=null)System.out.println(a.getFirst());
 		try{
